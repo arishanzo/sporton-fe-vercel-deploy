@@ -16,7 +16,6 @@ const CartItems = () => {
     0
   );
 
-  const payment = () => {};
 
   return (
     <CardWithHeader title="Cart Items">
