@@ -3,8 +3,6 @@
 import Image from "next/image";
 import Button from "../ui/button";
 import { FiRefreshCw } from "react-icons/fi";
-import OrderInformation from "../checkout/orderInformation";
-import OrderConfirmed from "./orderConfirmed";
 
 const OrderSubmitted = () => {
   const reloadOrderStatus = () => {
