@@ -1,5 +1,5 @@
 import Image from "next/image";
-import ProductActions from "../components/productDetail/productActions";
+import ProductActions from "../../components/productDetail/productActions";
 import priceFormatter from "@/app/utils/price-formatter";
 import { getProductDetail } from "@/app/services/product.service";
 import { getImageUrl } from "@/app/lib/api";

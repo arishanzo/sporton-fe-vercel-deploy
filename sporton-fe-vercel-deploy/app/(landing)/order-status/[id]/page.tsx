@@ -1,11 +1,8 @@
-"use client";
-
-import { useState } from "react";
-import OrderConfirmed from "../components/orderStatus/orderConfirmed";
-import OrderSubmitted from "../components/orderStatus/orderSubmitted";
+import OrderConfirmed from "../../components/orderStatus/orderConfirmed";
+import OrderSubmitted from "../../components/orderStatus/orderSubmitted";
 import { getTransactionById } from "@/app/services/transaction.service";
-import { TPageProps } from "../productId/page";
-import OrderRejected from "../components/orderStatus/orderRejected";
+import { TPageProps } from "../../product/[id]/page";
+import OrderRejected from "../../components/orderStatus/orderRejected";
 
 const OrderStatus = async ({ params }: TPageProps) => {
   const { id } = await params;

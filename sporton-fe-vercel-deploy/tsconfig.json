@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-  ],
+, "app/(landing)/components/checkout/orderInformation.jsx", "app/(landing)/components/checkout/cartItems.jsx", "app/(landing)/components/checkout/orderInformation.jsx", "app/(landing)/components/orderStatus/orderConfirmed.jsx"  ],
   "exclude": ["node_modules"]
 }

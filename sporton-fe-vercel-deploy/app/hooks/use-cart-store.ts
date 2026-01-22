@@ -15,6 +15,8 @@ export interface CustomerInfo {
 interface CartStore {
   customerInfo: CustomerInfo | null;
   items: CartItem[];
+  _hasHydrated: boolean;
+  setHasHydrated: (state: boolean) => void;
   setCustomerInfo: (info: CustomerInfo) => void;
   addItem: (product: Product, qty?: number) => void;
   removeItem: (productId: string) => void;
@@ -26,6 +28,10 @@ export const useCartStore = create<CartStore>()(
     (set, get) => ({
       customerInfo: null,
       items: [],
+      _hasHydrated: false,
+      setHasHydrated: (state) => {
+        set({ _hasHydrated: state });
+      },
       setCustomerInfo: (info) => {
         set({ customerInfo: info });
       },
@@ -52,6 +58,9 @@ export const useCartStore = create<CartStore>()(
     }),
     {
       name: "cart-storage",
+      onRehydrateStorage: () => (state) => {
+        state?.setHasHydrated(true);
+      },
     }
   )
 );
