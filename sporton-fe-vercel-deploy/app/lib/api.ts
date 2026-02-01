@@ -23,8 +23,10 @@ const res = await fetch(`${apiUrl}${endpoint}`, { ...options, cache: options?.ca
 }
 
 export function getImageUrl(path: string) {
-  if (path.startsWith("http")) return path; // artinya url nya sudah valid
-  return `${process.env.NEXT_PUBLIC_API_ROOT}/${path}`;
+  if (path.startsWith("http")) return path; 
+  const baseUrl = process.env.NEXT_PUBLIC_API_ROOT || "https://be-sporton.agunacourse.com";
+  const cleanPath = path.startsWith("/") ? path : `/${path}`;
+  return `${baseUrl}${cleanPath}`;
 }
 
 export function getAuthHeaders() {
