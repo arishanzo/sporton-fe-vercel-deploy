@@ -14,6 +14,8 @@ const AuthGuard = ({ children }: { children: React.ReactNode }) => {
     } else {
       setIsLoading(false);
     }
+
+    
   }, [router]);
 
   if (isLoading) {
