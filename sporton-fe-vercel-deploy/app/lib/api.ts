@@ -1,11 +1,11 @@
 export async function fetchAPI<T>(
   endpoint: string,
-  options?: RequestInit
+  options?: RequestInit,
 ): Promise<T> {
-  const fallbackApiUrl = `https://be-sporton.agunacourse.com/api`;
-const apiUrl = process.env.NEXT_PUBLIC_API_URL || fallbackApiUrl;
-const res = await fetch(`${apiUrl}${endpoint}`, { ...options, cache: options?.cache || "no-store", });
-
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}${endpoint}`, {
+    ...options,
+    cache: options?.cache || "no-store", // kita set no-store karena kita ingin mendapat data lebih real time atau lebih updated
+  });
 
   if (!res.ok) {
     let errorMessage = `Failed to fetch data from ${endpoint}`;
@@ -22,16 +22,14 @@ const res = await fetch(`${apiUrl}${endpoint}`, { ...options, cache: options?.ca
   return res.json();
 }
 
-export function getImageUrl(path: string | undefined | null) {
-  if (!path || path === "undefined" || path === "null") {
-    return "/images/placeholder.svg";
-  }
-  
-  if (path.startsWith("http")) return path;
-  
-  if (path.startsWith("/")) return path;
-  
-  const fallbackApiRoot = "https://be-sporton.agunacourse.com";
-  const apiRoot = process.env.NEXT_PUBLIC_API_ROOT || fallbackApiRoot;
-  return `${apiRoot}/${path}`;
+export function getImageUrl(path: string) {
+  if (path.startsWith("http")) return path; // artinya url nya sudah valid
+  return `${process.env.NEXT_PUBLIC_API_ROOT}/${path}`;
+}
+
+export function getAuthHeaders() {
+  const token = localStorage.getItem("token");
+  return {
+    Authorization: `Bearer ${token}`,
+  };
 }
