@@ -33,3 +33,4 @@ export function getAuthHeaders() {
     Authorization: `Bearer ${token}`,
   };
 }
+
